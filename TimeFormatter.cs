@@ -15,7 +15,7 @@ namespace RunningLate
 
         private static readonly IDictionary<MinuteFormat, Func<int, int, string>> MinuteFormatters = new Dictionary<MinuteFormat, Func<int, int, string>>
         {
-            { MinuteFormat.EACH_MINUTE, (time, msTime) => $"{time % 100 / 10}{msTime / GetMsPerGameMinute()}" },
+            { MinuteFormat.EACH_MINUTE, (time, msTime) => $"{time % 100 / 10}{((msTime / GetMsPerGameMinute()) is int min && min < 10 ? min : 0)}" },
             { MinuteFormat.VANILLA, (time, _) => (time % 100).ToString("00") },
         };
 
